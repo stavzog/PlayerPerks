@@ -1,0 +1,10 @@
+name: PlayerAbilities
+version: '1.0-SNAPSHOT'
+main: me.stavros.playerabilities.PlayerAbilities
+api-version: 1.19
+description: Gives Different Abilities to Players
+commands:
+  perks:
+    description: Assign perks to player
+    usage: /<command> <add> <player> <perk>
+    permission: playerabilities.perks

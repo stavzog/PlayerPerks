@@ -1,0 +1,9 @@
+name: PlayerPerks
+version: '${project.version}'
+main: me.stavros.playerperks.PlayerPerks
+api-version: 1.19
+commands:
+  perks:
+    description: Assign perks to player
+    usage: /<command> <add> <player> <perk>
+    permission: op

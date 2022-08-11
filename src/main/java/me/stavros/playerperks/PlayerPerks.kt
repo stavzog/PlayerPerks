@@ -11,6 +11,7 @@ import kotlin.coroutines.resume;
 class PlayerPerks : JavaPlugin() {
     companion object {
         lateinit var instance: Plugin
+        val perksmap = hashMapOf<String, HashSet<String>>()
     }
 
     init {

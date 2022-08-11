@@ -9,11 +9,8 @@ import kotlin.random.Random
 
 class Farmer: Perk {
     override val name = "farmer"
-    override val players get() = _players
 
     companion object {
-        private val _players = hashSetOf<String>()
-        private val scope = CoroutineScope(Dispatchers.Default)
 
         private val materials = mutableMapOf<Material, Material>().apply {
             this[Material.WHEAT] = Material.WHEAT

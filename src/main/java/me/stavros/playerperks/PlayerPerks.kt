@@ -2,6 +2,7 @@ package me.stavros.playerperks
 
 import kotlinx.coroutines.*
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import kotlin.coroutines.ContinuationInterceptor
@@ -28,10 +29,16 @@ class PlayerPerks : JavaPlugin() {
     }
 }
 
+val scope = CoroutineScope(Dispatchers.Default)
 suspend fun <T> sync(task: () -> T): T = withTimeout(10000L) {
     suspendCancellableCoroutine { cont ->
         Bukkit.getScheduler().runTask(PlayerPerks.instance, Runnable {
             runCatching(task).fold({ cont.resume(it) }, cont::resumeWithException)
         })
     }
+}
+
+fun Player.isIn(perk: String): Boolean {
+    if (PlayerPerks.perksmap.get(perk)?.contains(this.name) == true) return true
+    return false
 }

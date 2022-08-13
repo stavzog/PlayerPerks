@@ -27,7 +27,7 @@ class Farmer: Perk {
             if (e.block.type !in materials.keys) return;
             PlayerPerks.instance.logger.info("in list")
             val crop = e.block.blockData as Ageable
-            CoroutineScope(Dispatchers.Default).launch {
+            scope.launch {
                 repeat(5) {
                     if (crop.age == crop.maximumAge) cancel()
                     if (e.block.isEmpty) cancel()
@@ -38,6 +38,7 @@ class Farmer: Perk {
                         e.block.setBlockData(crop)
                     }
                 }
+                cancel()
             }
         }
 

@@ -34,7 +34,7 @@ class Miner: Perk {
             p.sendActionBar(Component.text("Super-Break Ability active for 4s"))
             running = true
             scope.launch {
-                for (i in 5 downTo 0) {
+                for (i in 4 downTo 0) {
                     delay(1000)
                     sync {p.sendActionBar(Component.text("Super-Break Ability active for $i s"))}
                 }

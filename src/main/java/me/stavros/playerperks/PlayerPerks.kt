@@ -26,6 +26,7 @@ class PlayerPerks : JavaPlugin() {
         getCommand("perks")!!.setExecutor(PerksCommand)
         Farmer().load()
         Miner().load()
+        Hunter().load()
     }
 }
 

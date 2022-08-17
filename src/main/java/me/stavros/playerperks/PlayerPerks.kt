@@ -27,6 +27,7 @@ class PlayerPerks : JavaPlugin() {
         Farmer().load()
         Miner().load()
         Hunter().load()
+        Hunter.addEmeraldRecipe()
     }
 }
 

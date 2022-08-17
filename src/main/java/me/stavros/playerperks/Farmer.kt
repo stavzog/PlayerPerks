@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.data.Ageable
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import kotlin.random.Random
 
@@ -18,6 +19,13 @@ class Farmer: Perk {
             this[Material.BEETROOTS] = Material.BEETROOT
             this[Material.CARROTS] = Material.CARROT
             this[Material.NETHER_WART] = Material.NETHER_WART
+        }
+
+        fun doubleCrops(e: BlockBreakEvent) {
+            if(!materials.containsKey(e.block.type)) return
+            e.block.drops.forEach {
+                e.block.world.dropItem(e.block.location, it)
+            }
         }
 
         fun fastGrow(e: BlockPlaceEvent) {

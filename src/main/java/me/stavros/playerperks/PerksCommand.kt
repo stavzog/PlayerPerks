@@ -10,13 +10,14 @@ object PerksCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.isEmpty()) return false
         if (args[0] == "add" && args.size == 3) {
-            if(args[1] in PlayerPerks.instance.config.getStringList(args[2])) sender.sendMessage("${ChatColor.RED}Player already has this perk")
-            PlayerPerks.instance.logger.info(args[1])
+            if(args[1] in plugin.config.getStringList(args[2])) sender.sendMessage("${ChatColor.RED}Player already has this perk")
+            plugin.logger.info(args[1])
             when (args[2]) {
                 "farmer" -> Farmer() add args[1]
+                "miner" -> Miner() add args[1]
             }
             sender.sendMessage("${ChatColor.GREEN}Success")
-            Bukkit.getPlayerExact(args[1])?.sendMessage("${ChatColor.GOLD} [Farming Committee] You are now a farmer")
+            Bukkit.getPlayerExact(args[1])?.sendMessage("${ChatColor.GOLD} [Farming Committee] You are now a ${args[2]}")
             return true
         }
 

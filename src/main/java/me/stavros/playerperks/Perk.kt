@@ -8,14 +8,16 @@ interface Perk {
     val name: String
 
     fun load() {
-        val config = PlayerPerks.instance.config
+        perksmap.put(name, hashSetOf<String>())
+        val config = plugin.config
         if(!config.contains(name)) return
-        PlayerPerks.perksmap.get(name)?.addAll(config.getStringList(name))
+        perksmap.get(name)?.addAll(config.getStringList(name))
     }
 
     infix fun add(player: String) {
-        PlayerPerks.instance.logger.info(Bukkit.getPlayerExact(player)?.name ?: "noplayer")
-        PlayerPerks.perksmap.get(name)?.add(Bukkit.getPlayerExact(player)?.name ?: return)
-        PlayerPerks.instance.config.set(name, PlayerPerks.perksmap.get(name) ?: return)
+        plugin.logger.info(Bukkit.getPlayerExact(player)?.name ?: "noplayer")
+        perksmap.get(name)?.add(Bukkit.getPlayerExact(player)?.name ?: return)
+        plugin.config.set(name, perksmap.get(name)?.toList())
+        plugin.saveConfig()
     }
 }

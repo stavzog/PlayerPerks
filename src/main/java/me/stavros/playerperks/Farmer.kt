@@ -21,11 +21,11 @@ class Farmer: Perk {
         }
 
         fun fastGrow(e: BlockPlaceEvent) {
-            PlayerPerks.instance.logger.info("block place")
+            plugin.logger.info("block place")
             val chance = 0.25
             //if(Random.nextDouble() > chance) return;
             if (e.block.type !in materials.keys) return;
-            PlayerPerks.instance.logger.info("in list")
+            plugin.logger.info("in list")
             val crop = e.block.blockData as Ageable
             scope.launch {
                 repeat(5) {

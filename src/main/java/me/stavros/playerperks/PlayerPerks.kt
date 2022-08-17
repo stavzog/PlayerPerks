@@ -12,7 +12,6 @@ import kotlin.coroutines.resume;
 class PlayerPerks : JavaPlugin() {
     companion object {
         lateinit var instance: Plugin
-        val perksmap = hashMapOf<String, HashSet<String>>()
     }
 
     init {
@@ -26,19 +25,22 @@ class PlayerPerks : JavaPlugin() {
         server.pluginManager.registerEvents(EventListener(), this)
         getCommand("perks")!!.setExecutor(PerksCommand)
         Farmer().load()
+        Miner().load()
     }
 }
 
 val scope = CoroutineScope(Dispatchers.Default)
+val plugin = PlayerPerks.instance
+val perksmap = hashMapOf<String, HashSet<String>>()
 suspend fun <T> sync(task: () -> T): T = withTimeout(10000L) {
     suspendCancellableCoroutine { cont ->
-        Bukkit.getScheduler().runTask(PlayerPerks.instance, Runnable {
+        Bukkit.getScheduler().runTask(plugin, Runnable {
             runCatching(task).fold({ cont.resume(it) }, cont::resumeWithException)
         })
     }
 }
 
 fun Player.isIn(perk: String): Boolean {
-    if (PlayerPerks.perksmap.get(perk)?.contains(this.name) == true) return true
+    if (perksmap.get(perk)?.contains(this.name) == true) return true
     return false
 }

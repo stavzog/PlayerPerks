@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PlayerPerks.iml" filepath="$PROJECT_DIR$/.idea/PlayerPerks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mcplgn-abilities/player-abilities.iml" filepath="$PROJECT_DIR$/mcplgn-abilities/player-abilities.iml" />
+    </modules>
+  </component>
+</project>

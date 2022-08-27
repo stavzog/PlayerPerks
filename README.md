@@ -1,5 +1,6 @@
 # PlayerPerks
 A Minecraft Paper plugin that give players different perks
+<sub>This is the Kotlin version of the plugin</sub>
 
 #### Perks/Roles
 ###### Farmer

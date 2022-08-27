@@ -1,5 +1,5 @@
 # PlayerPerks
-A Minecraft Paper plugin that give players different perks
+A Minecraft Paper plugin that give players different perks<br>
 <sub>This is the Kotlin version of the plugin</sub>
 
 #### Perks/Roles
